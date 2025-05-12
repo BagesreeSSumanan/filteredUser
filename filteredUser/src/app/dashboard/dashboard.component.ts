@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { APIservice } from '../../Services/APIService';
-import { map } from 'rxjs/operators';
+import { map, mergeMap, toArray } from 'rxjs/operators';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'dashboard',
@@ -13,16 +14,14 @@ export class DashboardComponent implements OnInit{
   userIDs =[1, 4 , 7,9];
   FilteredUser: any = [];
  ngOnInit(){
-  this.service.getData().
-  pipe(
- map((res: any) => 
-        (res.users as any[]).filter(user => this.userIDs.includes(user.id))
-      )
-  ).
-  subscribe(filtereddata  => {
-    console.log(filtereddata );
-    this.FilteredUser = filtereddata ;
-  });
+ from(this.userIDs).pipe(
+   mergeMap(userId => this.service.getData(userId)), 
+    toArray()
+    )
+    .subscribe(filteredData => {
+      console.log(filteredData);
+       this.FilteredUser = filteredData;
+    });
   }
 }
 

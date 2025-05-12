@@ -8,7 +8,7 @@ import { Observable } from "rxjs";
 export class APIservice{
  api = 'https://dummyjson.com/users'
  constructor(private http : HttpClient){}
- getData(): Observable<any> {
-    return this.http.get(this.api);
-  }
+getData(id: number): Observable<any> {
+  return this.http.get(`https://dummyjson.com/users/${id}`);
+}
 }
