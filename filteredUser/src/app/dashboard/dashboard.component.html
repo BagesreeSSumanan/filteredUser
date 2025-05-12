@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <h2>Selected Users</h2>
+
+  <div class="row">
+    <div *ngFor="let user of FilteredUser" class="col-md-4 mb-3">
+      <div class="card">
+        <img [src]="user.image" class="card-img-top" alt="{{ user.firstName }} {{ user.lastName }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ user.firstName }} {{ user.lastName }}</h5>
+          <p class="card-text"><strong>User ID:</strong> {{ user.id }}</p>
+          <p class="card-text"><strong>Role:</strong> {{ user.role }}</p>
+          <p class="card-text"><strong>Age:</strong> {{ user.age }}</p>
+          <p class="card-text"><strong>Gender :</strong> {{ user.gender }}</p>
+          <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+          <p class="card-text"><strong>Phone:</strong> {{ user.phone }}</p>
+          <p class="card-text"><strong>Birth Date:</strong> {{ user.birthDate }}</p>
+          <p class="card-text"><strong>Blood Group:</strong> {{ user.bloodGroup }}</p>
+          <p class="card-text"><strong>Height:</strong> {{ user.height }}</p>
+          <p class="card-text"><strong>Weight:</strong> {{ user.weight }}</p>
+          <p class="card-text"><strong>Eye Color:</strong> {{ user.eyeColor }}</p>
+          <p class="card-text"><strong>Job Details:</strong> {{ user.company.name }}, {{ user.company.department }}, {{ user.company.title }}</p>
+          <p class="card-text"><strong>Address:</strong> {{ user.address.address }} {{ user.address.city }} {{ user.address.state }} {{ user.address.country }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
